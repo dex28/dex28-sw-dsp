@@ -1,0 +1,1106 @@
+<?xml version="1.0"?>
+<!-- Used by the BRI2P recipe. Created on June 05, 2005. -->
+
+
+<strategy
+   version="6"
+   host="windows"
+   name="BRI2P"
+   full_path="\\\\nibbles\\dsp-sw\\BRI2P\\BRI2P.str"
+   comment="Used by the BRI2P recipe. Created on June 05, 2005."
+   dont_expand_iterators="1"
+   size_warnings="1"
+   saves_since_reduce="6"
+>
+
+   <!-- CHANGE  auto initialization  OF  c54x  TO  RAM_auto_init -->
+   <instr
+      op="4a"
+      s0="Memory Maps\\c54x"
+      u1="2"
+   />
+
+   <!-- CHANGE  vectors  OF  vectors.obj\.vectors  TO  TRUE -->
+   <instr
+      dont_undo="1"
+      op="48"
+      s0="All Input Files\\BRI2P\\vectors.obj\\.vectors"
+      u1="1"
+   />
+
+   <!-- CHANGE  entry  OF  rts.lib\boot.obj\.text\_c_int00  TO  TRUE -->
+   <instr
+      dont_undo="1"
+      op="1d"
+      s0="All Input Files\\BRI2P\\rts.lib\\boot.obj\\.text\\_c_int00"
+      u1="1"
+   />
+
+   <!-- REQUIRE everything but unreferenced conditionally linked sections BE IN  run_view -->
+   <instr
+      dont_undo="1"
+      op="40"
+      s0="Memory Maps\\c54x\\run_view"
+   />
+
+   <!-- CHANGE  stack  size OF  c54x  TO  0600h -->
+   <instr
+      op="4c"
+      s0="Memory Maps\\c54x"
+      s1="stack"
+      u3="600"
+   />
+
+   <!-- CHANGE  heap  size OF  c54x  TO  00h -->
+   <instr
+      op="4d"
+      s0="Memory Maps\\c54x"
+      s1="heap"
+   />
+
+   <!-- NEW  child output file  OF  Output Files  WITH  full_path=.\Debug\ge2p.out  HOLDING  map c54x -->
+   <instr
+      op="27"
+      s0="Output Files"
+      s1=".\\Debug\\ge2p.out"
+      s2="Memory Maps\\c54x"
+      u3="70006c"
+   />
+
+   <!-- CHANGE  make map file  OF  Output Files\ge2p.out  TO  TRUE -->
+   <instr
+      op="3b"
+      s0="Output Files\\ge2p.out"
+      u1="1"
+   />
+
+   <!-- CHANGE  map file name  OF  Output Files\ge2p.out  TO  ".\Debug\ge2p.map" -->
+   <instr
+      op="3a"
+      s0="Output Files\\ge2p.out"
+      s1=".\\Debug\\ge2p.map"
+   />
+
+   <!-- NEW  child output section  OF  run_view\program_memory\EPROG  WITH  name=.vectors, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG"
+      s1=".vectors"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\program_memory\EPROG\.vectors  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG\\.vectors"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\program_memory\EPROG\.vectors  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG\\.vectors"
+      u1="1"
+   />
+
+   <!-- CHANGE  alloc_kind  OF  run_view\program_memory\EPROG  TO  legacy_region -->
+   <instr
+      op="23"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG"
+      u1="f"
+   />
+
+   <!-- NEW  child output section  OF  run_view\program_memory\EPROG  WITH  name=.text, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG"
+      s1=".text"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\program_memory\EPROG\.text  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG\\.text"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\program_memory\EPROG\.text  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG\\.text"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\BIOSREGS  WITH  name=.sysregs, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\BIOSREGS"
+      s1=".sysregs"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\BIOSREGS\.sysregs  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\BIOSREGS\\.sysregs"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\BIOSREGS\.sysregs  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\BIOSREGS\\.sysregs"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.sysparm, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".sysparm"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.sysparm  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysparm"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.sysparm  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysparm"
+      u1="1"
+   />
+
+   <!-- CHANGE  alloc_kind  OF  run_view\data_memory\IDATA  TO  legacy_region -->
+   <instr
+      op="23"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u1="f"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.msgbuf, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".msgbuf"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.msgbuf  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.msgbuf"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.msgbuf  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.msgbuf"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.bss, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".bss"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.bss  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.bss"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.bss  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.bss"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.MEM$obj, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".MEM$obj"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.MEM$obj  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.MEM$obj"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.MEM$obj  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.MEM$obj"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.far, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".far"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.far  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.far"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.far  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.far"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.sysheap, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".sysheap"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.sysheap  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysheap"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.sysheap  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysheap"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.cio, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".cio"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.cio  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.cio"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.cio  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.cio"
+      u1="1"
+   />
+
+   <!-- MOVE  children of run_view\Not Yet Placed  WITH  kind=output section, base name=.sysmem  TO  run_view\data_memory\IDATA -->
+   <instr
+      op="9"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000057"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".sysmem"
+      u8="20001017"
+      u17="ffffffff"
+      u19="0"
+   />
+
+   <!-- ADD  run_view\Not Yet Placed\.stack  TO  run_view\data_memory\IDATA -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\Not Yet Placed\\.stack"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.stack  TO  TRUE -->
+   <instr
+      force_allocate="1"
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.stack"
+      u1="1"
+   />
+
+   <!-- MOVE  .cinit  FROM  run_view\Need Not Place  TO  run_view\data_memory\IDATA -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\Need Not Place\\.cinit"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\Need Not Place"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.cinit  TO  TRUE -->
+   <instr
+      force_allocate="1"
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.cinit"
+      u1="1"
+   />
+
+   <!-- ADD  run_view\Not Yet Placed\.pinit  TO  run_view\data_memory\IDATA -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\Not Yet Placed\\.pinit"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.pinit  TO  TRUE -->
+   <instr
+      force_allocate="1"
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.pinit"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.switch, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".switch"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.switch  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.switch"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.switch  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.switch"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.sysinit, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".sysinit"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.sysinit  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysinit"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.sysinit  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysinit"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.const, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".const"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.const  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.const"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.const  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.const"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.data, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".data"
+      u3="8"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.data  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.data"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.data  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.data"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.d2_rev, data_kind=hole, specl_kind=dsect -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".d2_rev"
+      u3="8"
+      u4="7"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.d2_rev  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.d2_rev"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.d2_rev  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.d2_rev"
+      u1="1"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.vsb_rev, data_kind=hole, specl_kind=dsect -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".vsb_rev"
+      u3="8"
+      u4="7"
+   />
+
+   <!-- CHANGE  dont inherit fill  OF  run_view\data_memory\IDATA\.vsb_rev  TO  TRUE -->
+   <instr
+      op="3c"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.vsb_rev"
+      u1="1"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.vsb_rev  TO  TRUE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.vsb_rev"
+      u1="1"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.vectors  TO  run_view\program_memory\EPROG\.vectors -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG\\.vectors"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".vectors"
+      u8="2014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\program_memory\EPROG\.vectors  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG\\.vectors"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.text  TO  run_view\program_memory\EPROG\.text -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG\\.text"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".text"
+      u8="1014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\program_memory\EPROG\.text  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG\\.text"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.sysregs  TO  run_view\data_memory\BIOSREGS\.sysregs -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\BIOSREGS\\.sysregs"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".sysregs"
+      u8="2014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\BIOSREGS\.sysregs  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\BIOSREGS\\.sysregs"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.sysparm  TO  run_view\data_memory\IDATA\.sysparm -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysparm"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".sysparm"
+      u8="2014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.sysparm  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysparm"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.msgbuf  TO  run_view\data_memory\IDATA\.msgbuf -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.msgbuf"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".msgbuf"
+      u8="1014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.msgbuf  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.msgbuf"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.bss  TO  run_view\data_memory\IDATA\.bss -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.bss"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".bss"
+      u8="1014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.bss  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.bss"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.MEM$obj  TO  run_view\data_memory\IDATA\.MEM$obj -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.MEM$obj"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".MEM$obj"
+      u8="2014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.MEM$obj  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.MEM$obj"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.far  TO  run_view\data_memory\IDATA\.far -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.far"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".far"
+      u8="1014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.far  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.far"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.sysheap  TO  run_view\data_memory\IDATA\.sysheap -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysheap"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".sysheap"
+      u8="2014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.sysheap  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysheap"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.cio  TO  run_view\data_memory\IDATA\.cio -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.cio"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".cio"
+      u8="1014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.cio  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.cio"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.switch  TO  run_view\data_memory\IDATA\.switch -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.switch"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".switch"
+      u8="1014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.switch  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.switch"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.sysinit  TO  run_view\data_memory\IDATA\.sysinit -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysinit"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".sysinit"
+      u8="2014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.sysinit  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysinit"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.const  TO  run_view\data_memory\IDATA\.const -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.const"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".const"
+      u8="1014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.const  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.const"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.data  TO  run_view\data_memory\IDATA\.data -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.data"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".data"
+      u8="1014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.data  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.data"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.d2_rev  TO  run_view\data_memory\IDATA\.d2_rev -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.d2_rev"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".d2_rev"
+      u8="1014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.d2_rev  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.d2_rev"
+   />
+
+   <!-- ADD  children of run_view\Not Yet Placed  WITH  kind=any section, base name=.vsb_rev  TO  run_view\data_memory\IDATA\.vsb_rev -->
+   <instr
+      op="8"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.vsb_rev"
+      s1="Memory Maps\\c54x\\run_view\\Not Yet Placed"
+      u2="4"
+      u3="40000054"
+      u4="1"
+      s5="TEMPLATE"
+      s6=".vsb_rev"
+      u8="2014"
+      u17="0"
+   />
+
+   <!-- CHANGE  force load placement  OF  run_view\data_memory\IDATA\.vsb_rev  TO  FALSE -->
+   <instr
+      op="55"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.vsb_rev"
+   />
+
+   <!-- CHANGE  fill_holes  OF  run_view\program_memory\EPROG\.vectors  TO  TRUE -->
+   <instr
+      op="10"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG\\.vectors"
+      u1="1"
+   />
+
+   <!-- CHANGE  fill_holes  OF  run_view\program_memory\EPROG\.text  TO  TRUE -->
+   <instr
+      op="10"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG\\.text"
+      u1="1"
+   />
+
+   <!-- CHANGE  fill_holes  OF  run_view\data_memory\IDATA\.sysparm  TO  TRUE -->
+   <instr
+      op="10"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysparm"
+      u1="1"
+   />
+
+   <!-- CHANGE  fill_holes  OF  run_view\data_memory\IDATA\.switch  TO  TRUE -->
+   <instr
+      op="10"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.switch"
+      u1="1"
+   />
+
+   <!-- CHANGE  fill_holes  OF  run_view\data_memory\IDATA\.const  TO  TRUE -->
+   <instr
+      op="10"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.const"
+      u1="1"
+   />
+
+   <!-- CHANGE  fill_holes  OF  run_view\data_memory\IDATA\.data  TO  TRUE -->
+   <instr
+      op="10"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.data"
+      u1="1"
+   />
+
+   <!-- CHANGE  fill_holes  OF  run_view\data_memory\IDATA\.d2_rev  TO  TRUE -->
+   <instr
+      op="10"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.d2_rev"
+      u1="1"
+   />
+
+   <!-- CHANGE  fill_holes  OF  run_view\data_memory\IDATA\.vsb_rev  TO  TRUE -->
+   <instr
+      op="10"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.vsb_rev"
+      u1="1"
+   />
+
+   <!-- CHANGE  alloc_kind  OF  run_view\data_memory\IDATA  TO  struct -->
+   <instr
+      op="23"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u1="a"
+   />
+
+   <!-- CHANGE  alloc_kind  OF  run_view\program_memory\EPROG  TO  struct -->
+   <instr
+      op="23"
+      s0="Memory Maps\\c54x\\run_view\\program_memory\\EPROG"
+      u1="a"
+   />
+
+   <!-- NEW  child output section  OF  run_view\data_memory\IDATA  WITH  name=.b1mem, data_kind=hole -->
+   <instr
+      op="22"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s1=".b1mem"
+      u3="8"
+   />
+
+   <!-- ALIGN  run address of run_view\data_memory\IDATA\.b1mem  TO  an address with 4 0's in the LSBs -->
+   <instr
+      op="2f"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      u2="f"
+   />
+
+   <!-- ALIGN  load address of run_view\data_memory\IDATA\.b1mem  TO  an address with 4 0's in the LSBs -->
+   <instr
+      op="30"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      u2="f"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.vsb_rev -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.vsb_rev"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.d2_rev -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.d2_rev"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.data -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.data"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.const -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.const"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.sysinit -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysinit"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.switch -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.switch"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.pinit -->
+   <instr
+      force_allocate="1"
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.pinit"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.cinit -->
+   <instr
+      force_allocate="1"
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.cinit"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.stack -->
+   <instr
+      force_allocate="1"
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.stack"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.cio -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.cio"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.sysheap -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysheap"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.far -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.far"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.MEM$obj -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.MEM$obj"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.bss -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.bss"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.msgbuf -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.msgbuf"
+   />
+
+   <!-- REORDER  .b1mem  WITHIN  run_view\data_memory\IDATA  BEFORE  run_view\data_memory\IDATA\.sysparm -->
+   <instr
+      op="2"
+      s0="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      s2="Memory Maps\\c54x\\run_view\\data_memory\\IDATA"
+      u3="2"
+      s4="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.sysparm"
+   />
+
+   <!-- CHANGE  strip debug  OF  Output Files\ge2p.out  TO  TRUE -->
+   <instr
+      op="51"
+      s0="Output Files\\ge2p.out"
+      u1="1"
+   />
+
+   <!-- ADD  B_Channel.obj\.b1mem  TO  run_view\data_memory\IDATA\.b1mem -->
+   <instr
+      op="2"
+      s0="All Input Files\\BRI2P\\B_Channel.obj\\.b1mem"
+      s1="Memory Maps\\c54x\\run_view\\data_memory\\IDATA\\.b1mem"
+   />
+
+   <!-- END  BRI2P -->
+   <instr
+      op="0"
+   />
+</strategy>

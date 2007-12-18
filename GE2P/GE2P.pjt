@@ -1,0 +1,57 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="GE2P"
+ProjectDir="\\gea\public\albatross\dsp\GE2P\"
+ProjectType=Executable
+CPUFamily=TMS320C54XX
+Tool="Compiler"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="B_Channel.cpp"
+Source="C:\ti\c5400\cgtools\lib\rts.lib"
+Source="DASL.cpp"
+Source="DTS.cpp"
+Source="ELU28.cpp"
+Source="ELU28_Master.cpp"
+Source="ELU28_Slave.cpp"
+Source="g711.cpp"
+Source="IrqHandlers.cpp"
+Source="lib\comm.lib"
+Source="lib\ecmr.o54"
+Source="lib\fmtd.o54"
+Source="lib\G726.o54"
+Source="lib\g729ab.o54"
+Source="lib\nfe.o54"
+Source="Main.cpp"
+Source="MsgBuf.cpp"
+Source="stdio.cpp"
+Source="Utility.cpp"
+Source="vectors.asm"
+Source="GE2P.rcp"
+
+["Release" Settings]
+FinalBuildCmd=copy Release\ge2p.out \\nibbles\albatros\hpi\ge2p.x54
+
+["Compiler" Settings: "Debug"]
+Options=-g -qq -pe -as -o2 -fr"\\gea\public\albatross\dsp\GE2P\Debug" -i"include" -mn -v548
+
+["Compiler" Settings: "Release"]
+Options=-qq -pe -as -o2 -fr"\\gea\public\albatross\dsp\GE2P\Debug" -i"include" -mn -v548
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v54
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v54
+
+["Linker" Settings: "Debug"]
+Options=-x -o".\Debug\ge2p.out" -cr -heap0 -m".\Debug\ge2p.map" -stack0x600
+
+["Linker" Settings: "Release"]
+Options=-x -o".\Release\ge2p.out" -cr -heap0 -m".\Release\ge2p.map" -stack0x600
+

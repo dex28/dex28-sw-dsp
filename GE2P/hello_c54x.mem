@@ -1,0 +1,25 @@
+MEMORY c54x
+   (FAMILY = c54x) {
+
+
+   SPACE program_memory PAGE 0 :
+      EPROG   (RWXI): o= 0x8000 e= 0xFFFF
+
+   SPACE data_memory PAGE 1 :
+      CPUREGS (RWI ): o= 0x0000 e= 0x005E
+      USERREGS(RWI ): o= 0x0060 e= 0x007B
+      BIOSREGS(RWI ): o= 0x007C e= 0x007F
+      IDATA   (RWI ): o= 0x0080 e= 0x7FFF
+
+   SPACE IO_memory PAGE 2 :
+}
+
+/* Table of address ranges vs. sets of spaces that share them. */
+/* For each entry in the table,                                */
+/* if a region's parent appears in the space set               */
+/* and the region is fully contained in the address range,     */
+/* then the region is shared with the other spaces of the set. */
+SHARED_ADDRESSES c54x {
+   o= 0x80 e= 0xFFFF {program_memory,
+                      data_memory}
+}

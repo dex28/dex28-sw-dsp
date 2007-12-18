@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!-- Created for Code Composer Studio project D:\WORK\Albatros 2\Software\DSP\GE2P\GE2P.pjt. Created on June 05, 2005. -->
+
+<recipe
+   version="7"
+   host="windows"
+   targets="500"
+   name="GE2P"
+   full_path="D:\\WORK\\Albatros 2\\Software\\DSP\\GE2P\\GE2P.rcq"
+   comment="Created for Code Composer Studio project D:\\WORK\\Albatros 2\\Software\\DSP\\GE2P\\GE2P.pjt. Created on June 05, 2005."
+   partials="0"
+   auto_inits="2"
+   data_kind_fixup="0"
+   args=".\\GE2P.arg"
+   cmds=".\\Debug.lkv,.\\GE2P.prj"
+   mems=".\\GE2P_c54x.mem"
+   map_project_bindings="Memory Maps\\c54x;All Input Files\\GE2P"
+   strategies=".\\GE2P.str"
+/>

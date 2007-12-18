@@ -1,0 +1,118 @@
+
+#include "DSP.h"
+#include "MsgBuf.h"
+#include "Cadence.h"
+
+///////////////////////////////////////////////////////////////////////////////
+/*
+	Notes:
+	
+		McBSP #0  <->   not used
+		McBSP #1  <->   not used
+		McBSP #2  <->   not used
+		
+		INT0    not used
+		INT1    not used
+		INT2    not used
+		INT3    not used
+*/
+
+// ioport unsigned int port3; // R: D0=DR0    W: D0=DX0
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Statistic counters:
+volatile unsigned long counter_D0_irq = 0;
+volatile unsigned long counter_D1_irq = 0;
+volatile unsigned long counter_B0_irq = 0;
+volatile unsigned long counter_B1_irq = 0;
+volatile unsigned long counter_B2_irq = 0;
+volatile unsigned long counter_B3_irq = 0;
+
+///////////////////////////////////////////////////////////////////////////////
+
+volatile bool TINT_arrived = false;
+
+extern "C" interrupt void TINT_handler()
+{
+	TINT_arrived = true;
+
+	//D0.DecTimeoutTimer ();
+	//D1.DecTimeoutTimer ();
+
+	extern Timer SysT1;
+	SysT1.Decrement ();
+    }
+
+///////////////////////////////////////////////////////////////////////////////
+
+extern "C" interrupt void HINT_handler()
+{
+    }
+
+///////////////////////////////////////////////////////////////////////////////
+
+extern "C" interrupt void RINT0_handler()
+{
+    }
+
+extern "C" interrupt void XINT0_handler()
+{
+    }
+
+///////////////////////////////////////////////////////////////////////////////
+
+extern "C" interrupt void RINT1_handler()
+{
+    }
+    
+extern "C" interrupt void XINT1_handler()
+{
+    }
+    
+///////////////////////////////////////////////////////////////////////////////
+
+extern "C" interrupt void RINT2_handler()
+{
+    }
+    
+extern "C" interrupt void XINT2_handler()
+{
+    }
+    
+///////////////////////////////////////////////////////////////////////////////
+
+extern "C" interrupt void INT0_handler()
+{
+    }
+    
+///////////////////////////////////////////////////////////////////////////////
+
+extern "C" interrupt void INT1_handler()
+{
+    }
+
+///////////////////////////////////////////////////////////////////////////////
+
+extern "C" interrupt void INT2_handler()
+{
+    }
+    
+///////////////////////////////////////////////////////////////////////////////
+
+extern "C" interrupt void INT3_handler()
+{
+    }
+
+///////////////////////////////////////////////////////////////////////////////
+
+extern "C" interrupt void DMA4_handler()
+{
+    }
+    
+///////////////////////////////////////////////////////////////////////////////
+
+extern "C" interrupt void DMA5_handler()
+{
+    }
+

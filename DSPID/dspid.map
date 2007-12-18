@@ -1,0 +1,25 @@
+********************************************************************************
+TMS320C54x COFF/Hex Converter                                       Version 3.70
+********************************************************************************
+
+INPUT FILE NAME: <dspid.out>
+OUTPUT FORMAT:   ASCII-Hex
+
+PHYSICAL MEMORY PARAMETERS
+   Default data width   :  16
+   Default memory width :   8 (MS-->LS)
+   Default output width :   8
+
+
+OUTPUT TRANSLATION MAP
+--------------------------------------------------------------------------------
+00000000..00ffffff  Page=0  Memory Width=8  ROM Width=8
+--------------------------------------------------------------------------------
+   OUTPUT FILES: dspid.hex [b0..b7]
+
+   CONTENTS: 00002000..0000200b   .text Data Width=2   
+
+--------------------------------------------------------------------------------
+00000000..00ffffff  Page=1  Memory Width=8  ROM Width=8  "*DEFAULT PAGE 1*"
+--------------------------------------------------------------------------------
+   NO CONTENTS
